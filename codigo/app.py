@@ -10,7 +10,14 @@ except Exception as e:
     print("Error importing chatbot modules:", e)
 
 app = Flask(__name__)
-CORS(app, resources={r"/api/*": {"origins": "https://maurisantiagol.github.io"}})
+
+CORS(app, resources={r"/api/*": {
+    "origins": [
+        "https://maurisantiagol.github.io", 
+        "https://maurisantiagol.github.io/"
+    ]
+}})
+
 @app.route('/api/chat', methods=['POST'])
 def chat():
     """Handles conversational/query requests based on the hybrid logic."""
