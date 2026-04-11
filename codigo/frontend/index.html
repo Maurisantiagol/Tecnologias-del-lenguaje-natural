@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tilin's Kitchen - AI Italian Dining</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="background-container">
+        <div class="overlay"></div>
+    </div>
+
+    <main class="chat-container">
+        <div class="ai-widget">
+            <div class="chat-display" id="chat-display">
+                <div class="message bot-message">
+                    <div class="content">
+                        Buongiorno! I'm Chef Bot. 👨‍🍳 Let me know what you're craving.<br><br>
+                        <em>Try asking for:</em>
+                        <ul style="margin-left: 1rem; margin-top: 0.5rem; font-size: 0.9em;">
+                            <li>"Quick vegan pizza" 🚀</li>
+                            <li>"Recommend me something with salmon"</li>
+                            <li>"Book a table for Tuesday at 8pm" 📅</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="autocomplete-container" id="autocomplete-container">
+            </div>
+
+            <div class="input-area">
+                <input type="text" id="user-input" placeholder="Ask Chef Bot..." autocomplete="off">
+                <button id="send-btn">
+                    <svg viewBox="0 0 24 24" width="24" height="24" stroke="currentColor" stroke-width="2" fill="none"
+                        stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="22" y1="2" x2="11" y2="13"></line>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"></polygon>
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+
+</html>
