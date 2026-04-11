@@ -3,7 +3,7 @@ const userInput = document.getElementById('user-input');
 const sendBtn = document.getElementById('send-btn');
 const autocompleteContainer = document.getElementById('autocomplete-container');
 
-const API_URL = 'http://127.0.0.1:5000/api';
+const API_URL = 'https://tecnologias-del-lenguaje-natural.onrender.com';
 
 // --- CHAT LOGIC ---
 
