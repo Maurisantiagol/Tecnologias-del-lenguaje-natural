@@ -29,6 +29,8 @@ import warnings
 
 import pandas as pd
 import numpy as np
+import matplotlib
+matplotlib.use('Agg')
 import matplotlib.pyplot as plt
 import joblib
 import spacy
@@ -66,12 +68,12 @@ def elapsed():
     return f"{time.time() - START_TIME:.1f}s"
 
 def banner(title):
-    print(f"\n{'='*60}")
-    print(f"  {title}")
-    print(f"{'='*60}")
+    print(f"\n{'='*60}", flush=True)
+    print(f"  {title}", flush=True)
+    print(f"{'='*60}", flush=True)
 
 banner("TRAIN_MODELS.PY — Pipeline de Entrenamiento")
-print("Destino PKL:", RUTA_PLK)
+print("Destino PKL:", RUTA_PLK, flush=True)
 
 # ============================================================
 # 1. DESCARGA Y CARGA DEL DATASET
