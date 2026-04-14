@@ -22,6 +22,17 @@ except Exception as e:
     traceback.print_exc()
     raise
 
+<<<<<<< HEAD
+=======
+app = Flask(__name__)
+
+CORS(app, resources={r"/api/*": {
+    "origins": [
+        "https://maurisantiagol.github.io", 
+        "https://maurisantiagol.github.io/"
+    ]
+}})
+>>>>>>> b7ed2162111074a1b66d364b49ff04e51415324f
 
 # ==============================================================================
 # POST /api/chat  — Endpoint principal de conversación
@@ -143,7 +154,11 @@ def health():
 # MAIN
 # ==============================================================================
 if __name__ == '__main__':
+<<<<<<< HEAD
     port = int(os.environ.get("PORT", 5000))
     debug = os.environ.get("FLASK_DEBUG", "false").lower() == "true"
     print(f"\n🚀 Servidor iniciando en http://0.0.0.0:{port}")
     app.run(host='0.0.0.0', port=port, debug=debug)
+=======
+    app.run(host='0.0.0.0', port=5000, debug=True)
+>>>>>>> b7ed2162111074a1b66d364b49ff04e51415324f
