@@ -5,7 +5,29 @@
 
 'use strict';
 
-const API_URL = 'https://tecnologias-del-lenguaje-natural.onrender.com/api';
+const URL_PROD = 'https://tecnologias-del-lenguaje-natural.onrender.com/api';
+const URL_LOCAL = 'http://localhost:5000/api';
+
+// Usar Localhost por defecto si estamos en desarrollo, sino usar Prod.
+let API_URL = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') 
+              ? URL_LOCAL : URL_PROD;
+
+// Wrapper de fetch() para fallback dual
+async function fetchWithFallback(endpoint, options) {
+    try {
+        return await fetch(`${API_URL}${endpoint}`, options);
+    } catch (err) {
+        if (API_URL === URL_LOCAL) {
+            console.warn("Local API no conectada. Cambiando a API en Producción...");
+            API_URL = URL_PROD;
+            return await fetch(`${API_URL}${endpoint}`, options);
+        } else {
+            console.warn("Prod API inactiva. Probando API Local...");
+            API_URL = URL_LOCAL;
+            return await fetch(`${API_URL}${endpoint}`, options);
+        }
+    }
+}
 
 // ── DOM References ─────────────────────────────────────────────
 const chatDisplay          = document.getElementById('chat-display');
@@ -262,7 +284,7 @@ async function sendMessage(text) {
     showTyping();
 
     try {
-        const response = await fetch(`${API_URL}/chat`, {
+        const response = await fetchWithFallback('/chat', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ message: trimmed }),
@@ -305,10 +327,9 @@ function setInputEnabled(enabled) {
     sendBtn.style.opacity = enabled ? '1' : '0.5';
 }
 
-// ── Reset conversation ──────────────────────────────────────────
 async function resetConversation() {
     try {
-        await fetch(`${API_URL}/reset`, { method: 'POST' });
+        await fetchWithFallback('/reset', { method: 'POST' });
     } catch (_) { /* server may be down, still reset UI */ }
 
     // Clear chat display except welcome message rebuild
@@ -404,7 +425,7 @@ userInput.addEventListener('input', (e) => {
 
     autocompleteTimeout = setTimeout(async () => {
         try {
-            const res  = await fetch(`${API_URL}/suggest?q=${encodeURIComponent(query)}`);
+            const res  = await fetchWithFallback(`/suggest?q=${encodeURIComponent(query)}`);
             const data = await res.json();
             if (data.suggestions && data.suggestions.length > 0) {
                 renderSuggestions(data.suggestions);
