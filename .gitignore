@@ -41,3 +41,4 @@ Codigo/chatbot_italiano.py
 antigravity_config/mission_prompts.md
 antigravity_config/.antigravity/rules.md
 Codigo/test_chatbot.py
+codigo/test_nlu.py

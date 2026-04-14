@@ -48,10 +48,23 @@ except OSError:
 
 
 def lematizar_entrada(texto: str) -> str:
-    """Limpia, elimina stopwords y lematiza con spaCy (igual que chatbot_italiano.py)."""
+    """Limpia, elimina stopwords, corrige ortografía y lematiza con spaCy (igual que chatbot_italiano.py)."""
     if not _spacy_loaded or nlp is None:
         return texto.lower().strip()
-    texto_limpio = re.sub(r'[^a-zA-Z\s]', ' ', str(texto).lower())
+    
+    texto_min = str(texto).lower()
+
+    # Spellchecking integration
+    try:
+        from spellchecker import SpellChecker
+        spell = SpellChecker()
+        palabras = texto_min.split()
+        corr_palabras = [spell.correction(word) or word for word in palabras]
+        texto_min = " ".join(corr_palabras)
+    except ImportError:
+        pass
+
+    texto_limpio = re.sub(r'[^a-zA-Z\s]', ' ', texto_min)
     texto_limpio = re.sub(r'\s+', ' ', texto_limpio).strip()
     doc = nlp(texto_limpio)
     lemas_validos = [
@@ -131,7 +144,7 @@ def get_recommendations_api(antojo: str, dietas: dict,
 
     results = []
     for idx in indices:
-        if similitudes[idx] < 0.05 or len(results) >= top_n:
+        if similitudes[idx] < 0.15 or len(results) >= top_n:
             break
         receta = df_base.iloc[idx]
 
@@ -220,6 +233,16 @@ class AsistenteItalianoPipeline:
         """
         texto_limpio = mensaje_usuario.strip()
         low = texto_limpio.lower()
+
+        # ---- ESCAPE HATCH GLOBAL ----
+        escape_words = ['cancel', 'exit', 'quit', 'stop', 'no', 'nevermind']
+        if any(word in low.split() for word in escape_words):
+            self._reset_session()
+            return {
+                "reply": "No problem! Let's cancel that. What else can I help you with?",
+                "intent": "Cancel",
+                "recipes": []
+            }
 
         # ---- Multi-turno: si hay reserva en curso ----
         if self.session_state["intent_actual"] == "Book_Table":
@@ -334,21 +357,31 @@ class AsistenteItalianoPipeline:
     @staticmethod
     def _parse_hora(texto: str):
         """Extrae la hora de un texto. Retorna float (24h) o None."""
-        match = re.search(r'(\d{1,2})(?:\s?:\s?(\d{2}))?\s?(am|pm)?', texto)
-        if match:
-            h = int(match.group(1))
-            m = int(match.group(2)) if match.group(2) else 0
-            ampm = match.group(3)
+        # 1. Buscar formatos de hora explícitos con regex primero
+        match_explicito = re.search(r'\b(\d{1,2}):(\d{2})\s?(am|pm)?\b|\b(\d{1,2})\s?(am|pm)\b', texto)
+        if match_explicito:
+            if match_explicito.group(1): # Format hh:mm [am/pm]
+                h = int(match_explicito.group(1))
+                m = int(match_explicito.group(2))
+                ampm = match_explicito.group(3)
+            else: # Format h [am/pm]
+                h = int(match_explicito.group(4))
+                m = 0
+                ampm = match_explicito.group(5)
+            
             if ampm == 'pm' and h < 12:
                 h += 12
             elif ampm == 'am' and h == 12:
                 h = 0
             return h + (m / 60.0)
-        # Formato decimal (e.g. 14.5)
-        match2 = re.search(r'\b(\d{1,2}\.\d)\b', texto)
-        if match2:
+            
+        # 2. Si no hay formatos explícitos, buscar números sueltos o decimales
+        match_numero = re.search(r'\b(\d{1,2}(?:\.\d)?)\b', texto)
+        if match_numero:
             try:
-                return float(match2.group(1))
+                h = float(match_numero.group(1))
+                if h <= 24:
+                   return h
             except ValueError:
                 pass
         return None

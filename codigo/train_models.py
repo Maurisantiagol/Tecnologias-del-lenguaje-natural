@@ -620,6 +620,16 @@ print(df_nlu['intent'].value_counts().to_string())
 # ============================================================
 banner("6/8 — Entrenamiento SVM con GridSearchCV")
 
+# Downsample para evitar sesgo
+df_book = df_nlu[df_nlu['intent'] == 'Book_Table']
+if len(df_book) > 5000:
+    df_nlu = pd.concat([
+        df_book.sample(n=5000, random_state=42),
+        df_nlu[df_nlu['intent'] != 'Book_Table']
+    ]).sample(frac=1, random_state=42).reset_index(drop=True)
+    print(f"Dataset NLU después del Downsampling: {len(df_nlu):,} frases")
+    print(df_nlu['intent'].value_counts().to_string())
+
 X = df_nlu['texto_usuario']
 y = df_nlu['intent']
 
@@ -635,7 +645,7 @@ pipeline_svm = Pipeline([
         sublinear_tf=True,
         min_df=2,
     )),
-    ('svc', SVC(kernel='linear', probability=True))
+    ('svc', SVC(kernel='linear', probability=True, class_weight='balanced'))
 ])
 
 # Grid de hiperparámetros - Reducido para acelerar el entrenamiento (manteniendo la calidad lo más alta posible)
@@ -722,7 +732,8 @@ vectorizador_ingredientes = TfidfVectorizer(
 )
 
 print("  Vectorizando ingredientes lematizados...", flush=True)
-matriz_menu = vectorizador_ingredientes.fit_transform(df_nlp['ingredients_norm'])
+df_nlp['corpus_tfidf'] = df_nlp['recipe_title'].astype(str) + " " + df_nlp['course_list'].astype(str) + " " + df_nlp['ingredients_norm'].astype(str)
+matriz_menu = vectorizador_ingredientes.fit_transform(df_nlp['corpus_tfidf'])
 print(f"  Matriz: {matriz_menu.shape}  (recetas × términos)  [{elapsed()}]")
 print(f"  Vocabulario: {len(vectorizador_ingredientes.vocabulary_):,} términos")
 
