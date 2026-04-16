@@ -2,7 +2,7 @@ version: "3.9"
 
 services:
   backend:
-    build: ./Codigo
+    build: ./codigo
     container_name: tilins_backend
     ports:
       - "5000:5000"
@@ -16,7 +16,7 @@ services:
     ports:
       - "8080:80"
     volumes:
-      - ./Codigo/frontend:/usr/share/nginx/html:ro
+      - ./codigo/frontend:/usr/share/nginx/html:ro
     depends_on:
       - backend
     restart: unless-stopped

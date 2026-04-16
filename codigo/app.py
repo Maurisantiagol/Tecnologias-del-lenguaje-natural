@@ -11,7 +11,14 @@ from flask_cors import CORS
 
 # ── Inicializar Flask ──────────────────────────────────────────────────────────
 app = Flask(__name__)
-CORS(app)  # Permite peticiones cross-origin desde el frontend
+CORS(app, resources={r"/api/*": {
+    "origins": [
+        "https://maurisantiagol.github.io", 
+        "https://maurisantiagol.github.io/",
+        "http://localhost:8080",
+        "http://127.0.0.1:8080"
+    ]
+}})
 
 # ── Importar el módulo chatbot (carga modelos en el import) ───────────────────
 try:
@@ -21,15 +28,6 @@ except Exception as e:
     print(f"❌ Error importando chatbot.py: {e}")
     traceback.print_exc()
     raise
-
-app = Flask(__name__)
-
-CORS(app, resources={r"/api/*": {
-    "origins": [
-        "https://maurisantiagol.github.io", 
-        "https://maurisantiagol.github.io/"
-    ]
-}})
 
 # ==============================================================================
 # POST /api/chat  — Endpoint principal de conversación
