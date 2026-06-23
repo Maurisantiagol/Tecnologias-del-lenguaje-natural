@@ -1,85 +1,85 @@
-# Chatbot para Restaurante Italiano 🍝
+<div align="center">
+  <h1>🍝 Asistente Virtual para Restaurante Italiano</h1>
+  <p><strong>Un Chatbot End-to-End con NLP, Detección de Intenciones y Traducción en Tiempo Real</strong></p>
 
-Este proyecto es un chatbot de extremo a extremo diseñado para un restaurante italiano. Permite a los usuarios interactuar de forma natural para realizar reservaciones, consultar el menú, preguntar por ingredientes y alérgenos, y recibir recomendaciones de platillos utilizando Procesamiento de Lenguaje Natural (NLP).
+  ![Python](https://img.shields.io/badge/Python-3.8+-blue.svg)
+  ![Flask](https://img.shields.io/badge/Flask-3.0+-green.svg)
+  ![scikit-learn](https://img.shields.io/badge/scikit--learn-1.5+-orange.svg)
+  ![spaCy](https://img.shields.io/badge/NLP-spaCy-blueviolet.svg)
+</div>
+
+---
+
+Este proyecto es una solución integral orientada a la industria gastronómica. Consiste en un agente conversacional inteligente capaz de gestionar reservaciones, consultar menús, identificar alérgenos y hacer recomendaciones gastronómicas utilizando modelos de Machine Learning (NLP).
 
 ## 🌟 Características Principales
 
-*   **Reconocimiento de Intenciones (NLU):** Utiliza un modelo SVM (Support Vector Machine) entrenado con TF-IDF para detectar intenciones como `Book_Table` (Reservar Mesa), `Query_Menu` (Consultar Menú), `Recommend_Food` (Recomendar Comida), `Query_Ingredients` (Consultar Ingredientes) y `Modify_Booking` (Modificar Reserva).
-*   **Motor de Recomendación:** Recomienda platillos del menú basados en similitud del texto (Cosine Similarity) usando TF-IDF. Toma en cuenta restricciones dietéticas como dietas veganas, sin gluten, o alergias a nueces.
-*   **Soporte Bilingüe (Middleware de Traducción):** Aunque el modelo NLU y el dataset operan internamente en inglés, el sistema incluye un middleware de traducción automática bidireccional (usando `deep-translator`). Esto permite a los usuarios interactuar completamente en **español**.
-*   **API REST:** El backend está construido en Flask (`app.py`), exponiendo endpoints listos para ser consumidos por cualquier interfaz gráfica.
-*   **Frontend Integrado:** Interfaz web lista para usarse construida con HTML, CSS y Vanilla JS.
+- **🤖 Reconocimiento de Intenciones (NLU):** Utiliza un clasificador **SVM (Support Vector Machine)** entrenado sobre representaciones TF-IDF para detectar de forma natural las peticiones del usuario (Ej: `Book_Table`, `Query_Menu`, `Recommend_Food`).
+- **🎯 Sistema de Recomendación de Platillos:** Un motor basado en *Cosine Similarity* evalúa las consultas contra una base de datos pre-filtrada y procesada. Puede respetar restricciones dietéticas complejas (vegano, sin gluten, sin nueces, etc.).
+- **🌍 Middleware de Traducción Transparente:** La arquitectura del modelo base está optimizada para inglés. Para solucionar la barrera del idioma, se integró `deep-translator`. El sistema recibe entradas en español, las procesa internamente en el idioma original del modelo, y entrega la salida generada de regreso en español en tiempo real.
+- **🔌 API REST Estructurada:** Todo el núcleo de IA está encapsulado detrás de un servidor Flask, separando la lógica del frontend.
 
-## 🏗️ Arquitectura del Proyecto
+## 🏗️ Arquitectura del Sistema
 
-*   `app.py`: Archivo principal que levanta el servidor Flask. Contiene los endpoints `/api/chat`, `/api/suggest` y `/api/reset`. Aquí reside la lógica del middleware de traducción Español <-> Inglés.
-*   `chatbot.py` / `chatbot_italiano.py`: Núcleo de la lógica del asistente. Contiene el pipeline de procesamiento de texto con `spaCy`, la integración de los modelos de Machine Learning y la lógica de validación de reservas.
-*   `frontend/`: Directorio que contiene la interfaz web (`index.html`, `app.js`).
-*   `test_ruido_traduccion.py`: Script para probar la robustez del modelo de traducción y detección de intenciones inyectando "ruido" (errores tipográficos) simulando a un usuario real.
-*   Archivos `.pkl`: Modelos entrenados (SVM, TF-IDF, datasets serializados) listos para producción.
+El proyecto está diseñado bajo un esquema modular para facilitar su mantenimiento y escalabilidad:
 
-## 🚀 Cómo Ejecutar el Proyecto
+- 🟢 **`app.py` (Punto de Entrada / Servidor)**: Este es el **archivo principal de ejecución**. Levanta el servidor Flask, expone los endpoints de comunicación (`/api/chat`, `/api/suggest`) y maneja el flujo de traducción de idiomas.
+- 🧠 **`chatbot.py` / `chatbot_italiano.py` (Lógica de IA)**: Son los módulos internos que procesan el lenguaje natural. Son importados y utilizados por `app.py`. Se encargan de la lematización con spaCy y la predicción del SVM.
+- 🎨 **`frontend/`**: Contiene la interfaz gráfica al usuario final (Vanilla HTML/CSS/JS) diseñada para ser estética y funcional, conectándose dinámicamente con `app.py`.
+- 🧪 **`test_ruido_traduccion.py`**: Suite de pruebas robustas que simula escenarios reales donde el usuario comete errores ortográficos y de tipeo para evaluar la fiabilidad del modelo bajo estrés.
 
-### 1. Requisitos Previos
+---
 
-Asegúrate de tener Python 3.8 o superior instalado en tu sistema.
-Clona este repositorio o descarga el código fuente y navega hasta el directorio del proyecto en tu terminal.
+## 🚀 Guía de Instalación y Ejecución
 
-### 2. Instalación de Dependencias
+Sigue estos pasos para desplegar el proyecto localmente de principio a fin.
 
-Se recomienda crear un entorno virtual para no afectar tus dependencias globales:
+### 1. Requisitos Previos e Instalación
+
+Clona este repositorio o asegúrate de estar posicionado en la carpeta principal del código (`Codigo/`). Se recomienda crear un entorno virtual de Python.
 
 ```bash
-# Crear entorno virtual (opcional pero recomendado)
+# Crear entorno virtual
 python -m venv venv
 
-# Activar entorno (Windows)
-venv\Scripts\activate
-# Activar entorno (Mac/Linux)
-source venv/bin/activate
-```
+# Activar el entorno virtual
+venv\Scripts\activate   # En Windows
+source venv/bin/activate # En Mac/Linux
 
-Instala las librerías necesarias ejecutando:
-
-```bash
+# Instalar todas las dependencias
 pip install -r requirements.txt
 ```
 
-*(Nota: el archivo `requirements.txt` ya incluye el modelo de lenguaje de spaCy `en_core_web_sm`).*
+> **Nota:** El archivo `requirements.txt` ya se encarga de descargar el corpus necesario de `spaCy` (`en_core_web_sm`).
 
-### 3. Ejecutar el Servidor Backend (Flask)
+### 2. Ejecutar el Servidor (Backend)
 
-Para levantar la API, simplemente ejecuta:
+> ⚠️ **IMPORTANTE:** El archivo que **siempre** debes ejecutar para poner en marcha el proyecto es `app.py`. No ejecutes `chatbot.py` directamente; ese archivo es solo un módulo interno al que llama el servidor principal.
+
+Inicia la API ejecutando en tu terminal:
 
 ```bash
 python app.py
 ```
 
-Deberías ver un mensaje en consola indicando que el servidor se está ejecutando en `http://0.0.0.0:5000` (o `http://127.0.0.1:5000`).
+Al hacerlo, el servidor Flask inicializará los modelos `.pkl` en memoria y quedará en escucha en `http://0.0.0.0:5000` listo para procesar peticiones HTTP.
 
-### 4. Ejecutar la Interfaz de Usuario (Frontend)
+### 3. Visualizar la Interfaz Web (Frontend)
 
-El frontend no requiere de un servidor web adicional (como Node.js o Nginx) para pruebas básicas.
-Simplemente **abre el archivo `frontend/index.html` directamente en tu navegador web**.
+Una vez que el servidor backend esté corriendo, abre un explorador de archivos, entra a la carpeta `frontend/` y abre el archivo **`index.html`** directamente en tu navegador (Chrome, Edge, etc.). 
 
-*Asegúrate de que el backend de Flask esté corriendo en el puerto 5000, ya que el archivo `app.js` hace las peticiones apuntando a `http://localhost:5000/api/chat`.*
+La web buscará automáticamente la conexión al backend de Flask en tu equipo local (`localhost:5000`) y podrás comenzar a chatear.
 
-## 🌐 ¿Cómo funciona el Middleware de Traducción?
+---
 
-El motor principal fue entrenado en inglés. Para ofrecer una experiencia en español, el endpoint `/api/chat` en `app.py` hace lo siguiente:
+## 🧪 Suite de Pruebas de Estrés y Ruido
 
-1.  Recibe el texto en español junto a una bandera `translate_es: true`.
-2.  Traduce el texto de **Español a Inglés** utilizando `GoogleTranslator`.
-3.  El texto en inglés es procesado por el modelo SVM y las reglas del chatbot.
-4.  El chatbot genera una respuesta y/o una lista de recomendaciones (todo en inglés).
-5.  El servidor intercepta esa respuesta y traduce el texto principal (`reply`), los títulos de las recetas (`title`) y las instrucciones (`directions`) de **Inglés a Español** antes de enviar el JSON de vuelta al cliente.
+El proyecto incluye un mecanismo formal para verificar qué tan resistente es el chatbot a los errores de ortografía de los usuarios.
 
-## 🧪 Pruebas de Robustez (Ruido)
-
-Puedes probar cómo reacciona el sistema ante faltas de ortografía (muy útiles para medir su tolerancia a errores reales de usuarios):
+Para correr estas pruebas, ejecuta en otra ventana de la terminal:
 
 ```bash
 python test_ruido_traduccion.py
 ```
 
-Esto generará automáticamente casos de prueba inyectando ruido en las frases y exportará un reporte llamado `reporte_pruebas.txt` (y su versión en Word `.docx`).
+Este script generará automáticamente más de 200 iteraciones con diferentes niveles de error humano (ruido). Al finalizar, generará automáticamente **dos reportes detallados** (`reporte_pruebas.txt` y `reporte_pruebas.docx`) que documentan la precisión de las intenciones esperadas contra las obtenidas, incluyendo logs precisos de cómo actuó el traductor frente al texto deformado.
