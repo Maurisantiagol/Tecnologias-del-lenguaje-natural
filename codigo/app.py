@@ -8,17 +8,11 @@ import os
 import traceback
 from flask import Flask, request, jsonify
 from flask_cors import CORS
+from deep_translator import GoogleTranslator
 
 # ── Inicializar Flask ──────────────────────────────────────────────────────────
 app = Flask(__name__)
-CORS(app, resources={r"/api/*": {
-    "origins": [
-        "https://maurisantiagol.github.io", 
-        "https://maurisantiagol.github.io/",
-        "http://localhost:8080",
-        "http://127.0.0.1:8080"
-    ]
-}})
+CORS(app, resources={r"/api/*": {"origins": "*"}})
 
 # ── Importar el módulo chatbot (carga modelos en el import) ───────────────────
 try:
@@ -49,11 +43,31 @@ def chat():
         return jsonify({"error": "El campo 'message' es requerido."}), 400
 
     user_input = data['message'].strip()
+    translate_es = data.get('translate_es', False)
     if not user_input:
         return jsonify({"error": "El mensaje no puede estar vacío."}), 400
 
     try:
-        resultado = chatbot.asistente.procesar_mensaje(user_input)
+        # Traducción: Español -> Inglés
+        if translate_es:
+            user_input_en = GoogleTranslator(source='es', target='en').translate(user_input)
+        else:
+            user_input_en = user_input
+
+        # Procesamiento
+        resultado = chatbot.asistente.procesar_mensaje(user_input_en)
+
+        # Traducción: Inglés -> Español
+        if translate_es:
+            # Traducir la respuesta principal
+            resultado['reply'] = GoogleTranslator(source='en', target='es').translate(resultado['reply'])
+            
+            # Traducir la información de las recetas sugeridas (opcional pero muy útil)
+            for recipe in resultado.get('recipes', []):
+                recipe['title'] = GoogleTranslator(source='en', target='es').translate(recipe['title'])
+                if isinstance(recipe.get('directions'), list):
+                    recipe['directions'] = [GoogleTranslator(source='en', target='es').translate(d) for d in recipe['directions']]
+
         return jsonify(resultado)
     except Exception as e:
         traceback.print_exc()

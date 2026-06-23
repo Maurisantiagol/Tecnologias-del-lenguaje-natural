@@ -9,7 +9,7 @@ const URL_PROD = 'https://tecnologias-del-lenguaje-natural.onrender.com/api';
 const URL_LOCAL = 'http://localhost:5000/api';
 
 // Usar Localhost por defecto si estamos en desarrollo, sino usar Prod.
-let API_URL = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1') 
+let API_URL = (window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.hostname === '') 
               ? URL_LOCAL : URL_PROD;
 
 // Wrapper de fetch() para fallback dual
@@ -35,6 +35,21 @@ const userInput            = document.getElementById('user-input');
 const sendBtn              = document.getElementById('send-btn');
 const autocompleteContainer = document.getElementById('autocomplete-container');
 const resetBtn             = document.getElementById('reset-btn');
+const translateBtn         = document.getElementById('translate-btn');
+
+let translateEs = false;
+if (translateBtn) {
+    translateBtn.addEventListener('click', () => {
+        translateEs = !translateEs;
+        if (translateEs) {
+            translateBtn.querySelector('span').textContent = '🇪🇸 ES';
+            translateBtn.style.background = 'rgba(255, 165, 0, 0.4)';
+        } else {
+            translateBtn.querySelector('span').textContent = '🇬🇧 EN';
+            translateBtn.style.background = 'rgba(0, 0, 0, 0.2)';
+        }
+    });
+}
 
 // ── Intent Config (label + CSS class) ─────────────────────────
 const INTENT_MAP = {
@@ -287,7 +302,7 @@ async function sendMessage(text) {
         const response = await fetchWithFallback('/chat', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({ message: trimmed }),
+            body: JSON.stringify({ message: trimmed, translate_es: translateEs }),
         });
 
         removeTyping();
