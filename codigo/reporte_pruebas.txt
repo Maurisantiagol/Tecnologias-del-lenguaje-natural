@@ -1,0 +1,710 @@
+=== REPORTE DE PRUEBAS DEL TRADUCTOR Y CHATBOT ===
+
+--- Evaluando con Nivel de Ruido: 0.0% ---
+[FALLO] Original: 'Quiero actualizar mi reserva'
+        Ruidoso:  'Quiero actualizar mi reserva'
+        Traducido: 'I want to update my reservation'
+        Esperaba: Modify_Booking | Obtuvo: Book_Table
+
+[FALLO] Original: 'Quiero cancelar mi reserva'
+        Ruidoso:  'Quiero cancelar mi reserva'
+        Traducido: 'I want to cancel my reservation'
+        Esperaba: Modify_Booking | Obtuvo: Cancel
+
+[FALLO] Original: 'Quiero comer algo como carne que sea sin gluten'
+        Ruidoso:  'Quiero comer algo como carne que sea sin gluten'
+        Traducido: 'I want to eat something like meat that is gluten-free'
+        Esperaba: Recommend_Food | Obtuvo: Query_Ingredients
+
+[FALLO] Original: 'Quiero cancelar mi reserva'
+        Ruidoso:  'Quiero cancelar mi reserva'
+        Traducido: 'I want to cancel my reservation'
+        Esperaba: Modify_Booking | Obtuvo: Cancel
+
+[FALLO] Original: 'Quiero actualizar mi reserva'
+        Ruidoso:  'Quiero actualizar mi reserva'
+        Traducido: 'I want to update my reservation'
+        Esperaba: Modify_Booking | Obtuvo: Book_Table
+
+[FALLO] Original: 'Quiero cancelar mi reserva'
+        Ruidoso:  'Quiero cancelar mi reserva'
+        Traducido: 'I want to cancel my reservation'
+        Esperaba: Modify_Booking | Obtuvo: Cancel
+
+[FALLO] Original: 'Quiero actualizar mi reserva'
+        Ruidoso:  'Quiero actualizar mi reserva'
+        Traducido: 'I want to update my reservation'
+        Esperaba: Modify_Booking | Obtuvo: Book_Table
+
+==> Precisión con 0.0% de ruido: 96.50%
+
+--- Evaluando con Nivel de Ruido: 5.0% ---
+[FALLO] Original: 'Quiero actualizar mi reserva'
+        Ruidoso:  'Quiero actualizar mi reserva'
+        Traducido: 'I want to update my reservation'
+        Esperaba: Modify_Booking | Obtuvo: Book_Table
+
+[FALLO] Original: 'Quiero cancelar mi reserva'
+        Ruidoso:  'Quier cancelar mi resrva'
+        Traducido: 'I want to cancel my reservation'
+        Esperaba: Modify_Booking | Obtuvo: Cancel
+
+[FALLO] Original: 'Quiero comer algo como carne que sea sin gluten'
+        Ruidoso:  'Quiero comer algo cmoo carn eque sea sin glutec'
+        Traducido: 'I want to eat something like meat that is gluten-free'
+        Esperaba: Recommend_Food | Obtuvo: Query_Ingredients
+
+[FALLO] Original: 'Cual es el menu principal'
+        Ruidoso:  'Cual es el meu prancipal'
+        Traducido: 'What is the main meu'
+        Esperaba: Query_Menu | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Tienen menu de niños'
+        Ruidoso:  'Tienen enu de niños'
+        Traducido: 'They have enu as children'
+        Esperaba: Query_Menu | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Cuales son sus opciones en el menu'
+        Ruidoso:  'Culaes son sus opciones en el enu'
+        Traducido: 'What are your options in the enu'
+        Esperaba: Query_Menu | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Quiero actualizar mi reserva'
+        Ruidoso:  'Quiero actualizar mi reserva'
+        Traducido: 'I want to update my reservation'
+        Esperaba: Modify_Booking | Obtuvo: Book_Table
+
+[FALLO] Original: 'Quiero actualizar mi reserva'
+        Ruidoso:  'Quiero alutalizar mi reserva'
+        Traducido: 'I want to upgrade my reservation'
+        Esperaba: Modify_Booking | Obtuvo: Book_Table
+
+==> Precisión con 5.0% de ruido: 96.00%
+
+--- Evaluando con Nivel de Ruido: 15.0% ---
+[FALLO] Original: 'Quiero actualizar mi reserva'
+        Ruidoso:  'Quierc actualizar i reserva'
+        Traducido: 'I want to update my reservation'
+        Esperaba: Modify_Booking | Obtuvo: Book_Table
+
+[FALLO] Original: 'Mesa para dos el sabado por la noche'
+        Ruidoso:  'vesa para dos el sabad por la oche'
+        Traducido: 'dinner for two on Saturday night'
+        Esperaba: Book_Table | Obtuvo: Unknown
+
+[FALLO] Original: 'Quiero reservar una mesa para el miercoles a las 8'
+        Ruidoso:  'Quiero resezvra una musa para el imercfles a las 8'
+        Traducido: 'I want to resezvra a muse for imercfles at 8'
+        Esperaba: Book_Table | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Mesa para dos el martes por la noche'
+        Ruidoso:  'Mes apara ods el mrates r la ncohe'
+        Traducido: 'Me apara ods el mrates r la ncohe'
+        Esperaba: Book_Table | Obtuvo: Query_Ingredients
+
+[FALLO] Original: 'Quiero comer algo como carne que sea rapida'
+        Ruidoso:  'dero aome ralgo oco carne que sea rapiad'
+        Traducido: 'I dero aome rare or meat that is quick'
+        Esperaba: Recommend_Food | Obtuvo: Query_Ingredients
+
+[FALLO] Original: 'Cuales son los ingredientes de la ensalada'
+        Ruidoso:  'Cuayrs son los incredvetnes ne lw nesaaad'
+        Traducido: 'What are the incredvetnes ne lw nesaaad'
+        Esperaba: Query_Ingredients | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Quiero cancelar mi reserva'
+        Ruidoso:  'zuieor cancelar i resevra'
+        Traducido: 'to cancel and resevra'
+        Esperaba: Modify_Booking | Obtuvo: Cancel
+
+[FALLO] Original: 'Quiero comer algo como carne que sea sin gluten'
+        Ruidoso:  'Quieru ocmer algo ccmo carne que sea sin luten'
+        Traducido: 'I want to eat something like meat that is luten-free'
+        Esperaba: Recommend_Food | Obtuvo: Query_Ingredients
+
+[FALLO] Original: 'Mesa para dos el mañana por la noche'
+        Ruidoso:  'Masa par aoq e añana pr ola nche'
+        Traducido: 'Mass for aoq e añana pro wave nche'
+        Esperaba: Book_Table | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Quiero comer algo como carne que sea vegana'
+        Ruidoso:  'uireo comre algo cmoo cjrne que ea veufa'
+        Traducido: 'I want to eat something like something that looks like'
+        Esperaba: Recommend_Food | Obtuvo: Query_Ingredients
+
+[FALLO] Original: 'Cuales son sus opciones en el menu'
+        Ruidoso:  'Cdalse son smo opciones e el mtun'
+        Traducido: 'Which are the same options in the mtun'
+        Esperaba: Query_Menu | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Quiero reservar una mesa para el martes a las 9'
+        Ruidoso:  'Quier erservmr u mes ar el mates a as e'
+        Traducido: 'I want to serve a month ar the math to that'
+        Esperaba: Book_Table | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Cual es el menu principal'
+        Ruidoso:  'Cual es el enu rincipwl'
+        Traducido: 'What is the main enu?'
+        Esperaba: Query_Menu | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Mesa para dos el hoy por la noche'
+        Ruidoso:  'eMsa para dos el ho ypor ll nhcxe'
+        Traducido: 'eMsa for two today and for ll nhcxe'
+        Esperaba: Book_Table | Obtuvo: Query_Menu
+
+[FALLO] Original: 'Quiero reservar una mesa para el martes a las 7'
+        Ruidoso:  'Quero zeservar una mes apara l mrates a las 7'
+        Traducido: 'I want to save a month for him to see you at 7'
+        Esperaba: Book_Table | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Que ofrecen en el menu'
+        Ruidoso:  'se ofgectn ne ld wnum'
+        Traducido: 'se ofgectn ne ld wnum'
+        Esperaba: Query_Menu | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Cual es el menu principal'
+        Ruidoso:  'Cula e sql enu prdecipal'
+        Traducido: 'Cula e sql enu prdecipal'
+        Esperaba: Query_Menu | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Cuales son los ingredientes de la pizza'
+        Ruidoso:  'Cualse on los nigedrientex de la pizaz'
+        Traducido: 'Cualse on the nigedrientex of the pizaz'
+        Esperaba: Query_Ingredients | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Que comida sirven aqui'
+        Ruidoso:  'Que cotida svrn aqui'
+        Traducido: 'What nonsense here'
+        Esperaba: Query_Menu | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Cuales son los ingredientes de la ensalada'
+        Ruidoso:  'Cuaels osn l pngreidentes de lg enkalsd'
+        Traducido: 'Which osn l pngresidents of lg enkalsd'
+        Esperaba: Query_Ingredients | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Tienen menu de niños'
+        Ruidoso:  'Tieenn enu e aiños'
+        Traducido: 'They are ten years old'
+        Esperaba: Query_Menu | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Quiero cancelar mi reserva'
+        Ruidoso:  'Qiuero cancelar mi reserva'
+        Traducido: 'I want to cancel my reservation'
+        Esperaba: Modify_Booking | Obtuvo: Cancel
+
+[FALLO] Original: 'Quiero reservar una mesa para el lunes a las 9'
+        Ruidoso:  'Quiero resrar nua mesa para el lunes a las 9'
+        Traducido: 'I want to reschedule a table for Monday at 9'
+        Esperaba: Book_Table | Obtuvo: Modify_Booking
+
+[FALLO] Original: 'Mesa para dos el mañana por la noche'
+        Ruidoso:  'Mesa wara ds le maana por l noce'
+        Traducido: 'Mesa wara ds le morna por el noce'
+        Esperaba: Book_Table | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Quiero modificar mi reserva'
+        Ruidoso:  'Quieor omdiicar mi rseervb'
+        Traducido: 'I want to omdiicar my rseervb'
+        Esperaba: Modify_Booking | Obtuvo: Book_Table
+
+[FALLO] Original: 'Mesa para dos el domingo por la noche'
+        Ruidoso:  'Meas para dos el dojingo por al cphe'
+        Traducido: 'Meas for two the dojingo by the cphe'
+        Esperaba: Book_Table | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Cuales son los ingredientes de la tiramisu'
+        Ruidoso:  'ubes son los ungerdients de a tiratisu'
+        Traducido: 'ubes are the ungerdients of a tiratisu'
+        Esperaba: Query_Ingredients | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Quiero actualizar mi reserva'
+        Ruidoso:  'Quiero actutlizar mi beesrva'
+        Traducido: 'I want to update my beesrva'
+        Esperaba: Modify_Booking | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Quiero comer algo como pasta que sea picante'
+        Ruidoso:  'Quier ocpmer alog como apsta qeu sea picane'
+        Traducido: 'I want to use something like this if it's picane'
+        Esperaba: Recommend_Food | Obtuvo: Query_Ingredients
+
+[FALLO] Original: 'Cuales son los ingredientes de la tiramisu'
+        Ruidoso:  'taules son los igneedieneo de la itramiu'
+        Traducido: 'taules are the ignedieneo of the itramiu'
+        Esperaba: Query_Ingredients | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Que comida sirven aqui'
+        Ruidoso:  'eu omida sven aui'
+        Traducido: 'eu omida sven aui'
+        Esperaba: Query_Menu | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Quiero cancelar mi reserva'
+        Ruidoso:  'Quiero cnacelar i rseerva'
+        Traducido: 'I want to cancel and reserve'
+        Esperaba: Modify_Booking | Obtuvo: Cancel
+
+[FALLO] Original: 'Quiero ver el menu'
+        Ruidoso:  'Quiero ver el knu'
+        Traducido: 'I want to see the knu'
+        Esperaba: Query_Menu | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Quiero actualizar mi reserva'
+        Ruidoso:  'Quireo actualiazr mi reserva'
+        Traducido: 'I want to update my reservation'
+        Esperaba: Modify_Booking | Obtuvo: Book_Table
+
+[FALLO] Original: 'Cuales son los ingredientes de la risotto'
+        Ruidoso:  'Cuales son lis nigredisntes de la riostto'
+        Traducido: 'What are the nigredisntes of the riosto?'
+        Esperaba: Query_Ingredients | Obtuvo: Recommend_Food
+
+==> Precisión con 15.0% de ruido: 82.50%
+
+--- Evaluando con Nivel de Ruido: 30.0% ---
+[FALLO] Original: 'Quiero actualizar mi reserva'
+        Ruidoso:  'Quiero rcutalizrt  reserva'
+        Traducido: 'I want to rcutalizrt reservation'
+        Esperaba: Modify_Booking | Obtuvo: Book_Table
+
+[FALLO] Original: 'Mesa para dos el lunes por la noche'
+        Ruidoso:  'esa para ds le lunhs opr l anone'
+        Traducido: 'that one for two days on Mondays opr one'
+        Esperaba: Book_Table | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Cuales son los ingredientes de la tiramisu'
+        Ruidoso:  'Cuaes uon os ingeietee d la tiramisu'
+        Traducido: 'How do you prepare the tiramisu?'
+        Esperaba: Query_Ingredients | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Mesa para dos el martes por la noche'
+        Ruidoso:  'Msae pra dos l artds poa lc noahe'
+        Traducido: 'Msae for two l artds poa lc noahe'
+        Esperaba: Book_Table | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Quiero comer algo como carne que sea rapida'
+        Ruidoso:  'uieo comer wlg bcoo grane qe usea rqpida'
+        Traducido: 'I want to eat wlg bcoo grain that I use quickly'
+        Esperaba: Recommend_Food | Obtuvo: Query_Ingredients
+
+[FALLO] Original: 'Quiero comer algo como risotto que sea vegana'
+        Ruidoso:  'Qupro comre alog com orrsvttr lue ea egana'
+        Traducido: 'Qupro comre alog com orrsvttr lue ea egana'
+        Esperaba: Recommend_Food | Obtuvo: Query_Ingredients
+
+[FALLO] Original: 'Cuales son los ingredientes de la pasta'
+        Ruidoso:  'uales n lo fingreidnte sde la psta'
+        Traducido: 'uals are not fake'
+        Esperaba: Query_Ingredients | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Ese tiramisu contiene mariscos?'
+        Ruidoso:  'ste itramiu sonitele mrriocs'
+        Traducido: 'ste itramiu sonitele mrriocs'
+        Esperaba: Query_Ingredients | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Quiero comer algo como sopa que sea italiana'
+        Ruidoso:  'Quieob comre awj ocgh so qase sae itlamana'
+        Traducido: 'Quieob comre awj ocgh so qase sae itlamana'
+        Esperaba: Recommend_Food | Obtuvo: Unknown
+
+[FALLO] Original: 'Quiero reservar una mesa para el martes a las 20:00'
+        Ruidoso:  'uuvr resrear vunq mesc paf al mrtez a las 2:00'
+        Traducido: 'uuvr resrear vunq mesc paf al mrtez at 2:00'
+        Esperaba: Book_Table | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Recomiendame una carne sin gluten'
+        Ruidoso:  'Ricomsndeaem una caze son gluetn'
+        Traducido: 'Ricomsndeaem una caze son gluetn'
+        Esperaba: Recommend_Food | Obtuvo: Query_Ingredients
+
+[FALLO] Original: 'Cuales son los ingredientes de la ensalada'
+        Ruidoso:  'Caul son los iygreientrs de la enslad'
+        Traducido: 'Caul are the iygreientrs of the enslad'
+        Esperaba: Query_Ingredients | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Quiero cancelar mi reserva'
+        Ruidoso:  'Qiero canyelar md retezva'
+        Traducido: 'I want to canyelar md retezva'
+        Esperaba: Modify_Booking | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Cuales son los ingredientes de la risotto'
+        Ruidoso:  'wuales ss nlso ingcedeintv d la ritoto'
+        Traducido: 'wuales ss nlso ingcedeintv d la ritoto'
+        Esperaba: Query_Ingredients | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Ese pizza contiene tomate?'
+        Ruidoso:  'Ees pizza ocntene otmtae'
+        Traducido: 'Ees pizza ocntene otmtae'
+        Esperaba: Query_Ingredients | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Quiero comer algo como postre que sea rapida'
+        Ruidoso:  'uQero come algo cao potsre que hea raipad'
+        Traducido: 'uQero eat something cao so that hea Raipad'
+        Esperaba: Recommend_Food | Obtuvo: Query_Ingredients
+
+[FALLO] Original: 'Mesa para dos el mañana por la noche'
+        Ruidoso:  'Mas ara dos le zañad apr l naoch'
+        Traducido: 'But for two he zañad apr l naoch'
+        Esperaba: Book_Table | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Muestrame las categorias del menu'
+        Ruidoso:  'Muestram la caetgorisa edl eun'
+        Traducido: 'We show the category edl eun'
+        Esperaba: Query_Menu | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Quiero reservar una mesa para el hoy a las 20:00'
+        Ruidoso:  'Qunrho ersrar una mea prr el hoy a sas 2s0'
+        Traducido: 'Qunrho miss a point for today at about 2s0'
+        Esperaba: Book_Table | Obtuvo: Query_Menu
+
+[FALLO] Original: 'Quiero reservar una mesa para el miercoles a las 9'
+        Ruidoso:  'Quiejo esevrdr c ameta ppra md miercoel a la 9'
+        Traducido: 'Quiejo esevrdr c ameta ppra md Wednesday at 9'
+        Esperaba: Book_Table | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Cual es el menu principal'
+        Ruidoso:  'Cual se ql meru pxicnidla'
+        Traducido: 'Which one do I know?'
+        Esperaba: Query_Menu | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Ese pasta contiene ajo?'
+        Ruidoso:  'Ese pasta cotnleue ao?'
+        Traducido: 'That paste cotnleue year?'
+        Esperaba: Query_Ingredients | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Quiero reservar una mesa para el hoy a las 9'
+        Ruidoso:  'Queir orsrvar nua mes para el no xa ls '
+        Traducido: 'Want to save a new month for now'
+        Esperaba: Book_Table | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Quiero comer algo como ensalada que sea picante'
+        Ruidoso:  'uQero coe walg nso entlaada uqe sea pbnante'
+        Traducido: 'uQero coe walg nso entlaada uqe be pbnante'
+        Esperaba: Recommend_Food | Obtuvo: Query_Ingredients
+
+[FALLO] Original: 'Mesa para dos el hoy por la noche'
+        Ruidoso:  'ue ar ados el hoy oz la nche'
+        Traducido: 'ue ar ados today oz la nche'
+        Esperaba: Book_Table | Obtuvo: Modify_Booking
+
+[FALLO] Original: 'Ese risotto contiene tomate?'
+        Ruidoso:  'Ese rsdotto conuiene tomae?'
+        Traducido: 'Is that rsdotto suitable to take?'
+        Esperaba: Query_Ingredients | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Quiero cambiar mi reserva'
+        Ruidoso:  'Quiyro abia mi reeria'
+        Traducido: 'Quiyro opened my laugh'
+        Esperaba: Modify_Booking | Obtuvo: Book_Table
+
+[FALLO] Original: 'Cuales son los ingredientes de la tiramisu'
+        Ruidoso:  'Cmaelz sox ol singredintjb e la tirmisa'
+        Traducido: 'Cmaelz sox ol singredintjb e la tirmisa'
+        Esperaba: Query_Ingredients | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Quiero reservar una mesa para el martes a las 7'
+        Ruidoso:  'Queir recsbrgar un ameas pna el mites  alas 7'
+        Traducido: 'Wanting to recover an ameas pna the mites wings 7'
+        Esperaba: Book_Table | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Cuales son los ingredientes de la risotto'
+        Ruidoso:  'ualus son lfs ingerdientus de al iowto'
+        Traducido: 'ualus are lfs ingerdientus of al iowto'
+        Esperaba: Query_Ingredients | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Cual es el menu principal'
+        Ruidoso:  'puah es el han rnicipad'
+        Traducido: 'puah it's the han rnicipad'
+        Esperaba: Query_Menu | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Muestrame las categorias del menu'
+        Ruidoso:  'Muetrame s acaegoiras uel menr'
+        Traducido: 'Show me s acaegoiras uel menr'
+        Esperaba: Query_Menu | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Quiero cambiar mi reserva'
+        Ruidoso:  'Quiero cbmiax mi nesev'
+        Traducido: 'I want cbmiax my nesev'
+        Esperaba: Modify_Booking | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Quiero comer algo como pasta que sea deliciosa'
+        Ruidoso:  'Qiryo comeh jgo como pasat qeg ea dejivosa'
+        Traducido: 'Qiryo comeh jgo como pasat qeg ea dejivosa'
+        Esperaba: Recommend_Food | Obtuvo: Query_Ingredients
+
+[FALLO] Original: 'Quiero cambiar mi reserva'
+        Ruidoso:  'Quireo cbbair i reserva'
+        Traducido: 'I want cbbair and reservation'
+        Esperaba: Modify_Booking | Obtuvo: Book_Table
+
+[FALLO] Original: 'Que ofrecen en el menu'
+        Ruidoso:  'uQ eofrqcne en e lmneu'
+        Traducido: 'uQ eofrqcne in e lmneu'
+        Esperaba: Query_Menu | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Cuales son los ingredientes de la risotto'
+        Ruidoso:  'Cuqesl osn os ngreitentjs ed l aritoo'
+        Traducido: 'Cuqesl osn os ngreitentjs ed l aritoo'
+        Esperaba: Query_Ingredients | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Mesa para dos el jueves por la noche'
+        Ruidoso:  'Msa para dos el ue prz l cohe'
+        Traducido: 'More for two the ue prz l car'
+        Esperaba: Book_Table | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Quiero reservar una mesa para el lunes a las 7'
+        Ruidoso:  'cuiern reseravr nua emse apar l luens a as '
+        Traducido: 'cuiern reservavr nua emse apart l luens a como'
+        Esperaba: Book_Table | Obtuvo: Query_Ingredients
+
+[FALLO] Original: 'Cuales son los ingredientes de la tiramisu'
+        Ruidoso:  'Ckles to os inrgediees ed la tiarmisu'
+        Traducido: 'Ckles to os inrgediees ed la tiarmisu'
+        Esperaba: Query_Ingredients | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Cuales son los ingredientes de la pizza'
+        Ruidoso:  'Ckumes so los injrdieets d l apizzf'
+        Traducido: 'Ckumes so los injrdieets d l apizzf'
+        Esperaba: Query_Ingredients | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Ese risotto contiene leche?'
+        Ruidoso:  'Ese ioti octniene lecehj'
+        Traducido: 'That ioti octniene lecehj'
+        Esperaba: Query_Ingredients | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Que comida sirven aqui'
+        Ruidoso:  'Que caia sryvn au'
+        Traducido: 'What fell sryvn au'
+        Esperaba: Query_Menu | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Cuales son los ingredientes de la ensalada'
+        Ruidoso:  'axes sno lo gingedwntei de la rnaldaa'
+        Traducido: 'axes sno lo gingedwntei of the rnaldaa'
+        Esperaba: Query_Ingredients | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Quiero reservar una mesa para el sabado a las 8'
+        Ruidoso:  'uQiro ersrvar una meli pr el absad  ylaz '
+        Traducido: 'uQiro ersrvar un meli pr el absad ylaz'
+        Esperaba: Book_Table | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Cuales son sus opciones en el menu'
+        Ruidoso:  'Ctales son sus ocipmnes ne e meu'
+        Traducido: 'What are your ocipmnes ne e meu'
+        Esperaba: Query_Menu | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Ese tiramisu contiene nueces?'
+        Ruidoso:  'Ese gprajiu cotinene neucse?'
+        Traducido: 'That gprajiu cotinene neucse?'
+        Esperaba: Query_Ingredients | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Mesa para dos el miercoles por la noche'
+        Ruidoso:  'Mema para dos el mrclose por la nodhe'
+        Traducido: 'Mema for two the mrclose by the nodhe'
+        Esperaba: Book_Table | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Quiero cancelar mi reserva'
+        Ruidoso:  'Quiec ocancelar mi reserva'
+        Traducido: 'I want to cancel my reservation'
+        Esperaba: Modify_Booking | Obtuvo: Cancel
+
+[FALLO] Original: 'Quiero reservar una mesa para el hoy a las 21:00'
+        Ruidoso:  'Qiero yeseivor una meau apra le hy ao la 21:00'
+        Traducido: 'I want to see a meau apra le hy ao 9:00 p.m.'
+        Esperaba: Book_Table | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Ese pasta contiene leche?'
+        Ruidoso:  'Ese asta cotninee lech?'
+        Traducido: 'That antler cotninee milk?'
+        Esperaba: Query_Ingredients | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Quiero reservar una mesa para el lunes a las 8'
+        Ruidoso:  'Quier resevrar upa musa pjra el nes a las 8'
+        Traducido: 'I want to check upa musa pjra on Monday at 8'
+        Esperaba: Book_Table | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Quiero modificar mi reserva'
+        Ruidoso:  'Quio moiciac mi eresrvh'
+        Traducido: 'Quio moiciac my arervh'
+        Esperaba: Modify_Booking | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Mesa para dos el domingo por la noche'
+        Ruidoso:  'Mea prr dos kl doimggo por la ocve'
+        Traducido: 'Mea prr two kl doimggo by the ocve'
+        Esperaba: Book_Table | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Recomiendame una sopa deliciosa'
+        Ruidoso:  'Recomoendame uaw oap eiicosa'
+        Traducido: 'Recommend me uaw oap eiicosa'
+        Esperaba: Recommend_Food | Obtuvo: Query_Menu
+
+[FALLO] Original: 'Tienen menu de niños'
+        Ruidoso:  'iTdnen mon ued ndso'
+        Traducido: 'iTdnen mon ued ndso'
+        Esperaba: Query_Menu | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Mesa para dos el lunes por la noche'
+        Ruidoso:  'Meca paa dos e llnes oor lf nohce'
+        Traducido: 'Mecca for two and llnes oor lf nohce'
+        Esperaba: Book_Table | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Quiero comer algo como ensalada que sea deliciosa'
+        Ruidoso:  'Quieor ocmmr aggo komo enwlaada e se deticiot'
+        Traducido: 'I would like to add something as enwlaada and deticiot'
+        Esperaba: Recommend_Food | Obtuvo: Modify_Booking
+
+[FALLO] Original: 'Que ofrecen en el menu'
+        Ruidoso:  'Qu ofyeecn  nal meuj'
+        Traducido: 'What ofyeecn nal meuj'
+        Esperaba: Query_Menu | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Quiero reservar una mesa para el miercoles a las 21:00'
+        Ruidoso:  'Qiero eserar u amks apaau el miercotes a ap 12:0x'
+        Traducido: 'I want to wait for you amks apaau on wednesday at ap 12:0x'
+        Esperaba: Book_Table | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Quiero reservar una mesa para el lunes a las 20:00'
+        Ruidoso:  'Qiuvro seervar una emsa paar le luws a ab 20:00'
+        Traducido: 'Qiuvro servar an emsa paar lews ab 20:00'
+        Esperaba: Book_Table | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Cuales son los ingredientes de la pasta'
+        Ruidoso:  'Cuales sod o nrgedienteq de l pata'
+        Traducido: 'What are the characteristics of the leg?'
+        Esperaba: Query_Ingredients | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Mesa para dos el mañana por la noche'
+        Ruidoso:  'eMsa saar do l maañn apor lc nobhe'
+        Traducido: 'eMsa saar do l morn apor lc nobhe'
+        Esperaba: Book_Table | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Mesa para dos el lunes por la noche'
+        Ruidoso:  'sesa par ador ql lnes pyr la ncoe'
+        Traducido: 'sesa par ador ql lnes pyr la ncoe'
+        Esperaba: Book_Table | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Cuales son los ingredientes de la ensalada'
+        Ruidoso:  'Cuaes os hos nigrekientes d la eadrsa'
+        Traducido: 'What are the children of the eadrsa?'
+        Esperaba: Query_Ingredients | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Quiero modificar mi reserva'
+        Ruidoso:  'Quero modfitp im reerva'
+        Traducido: 'I want modfitp im reerva'
+        Esperaba: Modify_Booking | Obtuvo: Book_Table
+
+[FALLO] Original: 'Cuales son los ingredientes de la tiramisu'
+        Ruidoso:  'Cuaes son lob ngibdeiente de la timaiss'
+        Traducido: 'What are the benefits of timaiss?'
+        Esperaba: Query_Ingredients | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Mesa para dos el lunes por la noche'
+        Ruidoso:  'Msa pra dos le lfne po rl anvche'
+        Traducido: 'Msa for two lines by rl anvche'
+        Esperaba: Book_Table | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Quiero actualizar mi reserva'
+        Ruidoso:  'Quieor acutljizar i reserav'
+        Traducido: 'Want to update and reserve'
+        Esperaba: Modify_Booking | Obtuvo: Book_Table
+
+[FALLO] Original: 'Mesa para dos el viernes por la noche'
+        Ruidoso:  'Meda aar dsn e liverne spoy lk nocho'
+        Traducido: 'Meda aar dsn e liverne spoy lk nocho'
+        Esperaba: Book_Table | Obtuvo: Unknown
+
+[FALLO] Original: 'Cuales son sus opciones en el menu'
+        Ruidoso:  'Cuales sn suw ocpiores ne e lseu'
+        Traducido: 'What are your employees in the lseu?'
+        Esperaba: Query_Menu | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Mesa para dos el hoy por la noche'
+        Ruidoso:  'esa para do el hoy oir a noche'
+        Traducido: 'that's for today to hear at night'
+        Esperaba: Book_Table | Obtuvo: Query_Menu
+
+[FALLO] Original: 'Quiero reservar una mesa para el miercoles a las 7'
+        Ruidoso:  'uir oceserar vuxa emsa parm ea mbcoles a las '
+        Traducido: 'uir oceserar vuxa emsa parm ea mbcoles at'
+        Esperaba: Book_Table | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Cuales son los ingredientes de la tiramisu'
+        Ruidoso:  'Cuales sn los ingldeieets de la tiramsbu'
+        Traducido: 'What are the English words of tiramisu?'
+        Esperaba: Query_Ingredients | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Mesa para dos el viernes por la noche'
+        Ruidoso:  'pse raa dso el viernse por la noche'
+        Traducido: 'pse raa dso on friday night'
+        Esperaba: Book_Table | Obtuvo: Query_Ingredients
+
+[FALLO] Original: 'Cuales son los ingredientes de la risotto'
+        Ruidoso:  'Cules kon los ggiedinteq de la rsotf'
+        Traducido: 'What about the rsotf's ggiedinteq'
+        Esperaba: Query_Ingredients | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Que comida sirven aqui'
+        Ruidoso:  'Que ocmha isrven qiu'
+        Traducido: 'What ocmha isrven qiu'
+        Esperaba: Query_Menu | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Quiero comer algo como postre que sea deliciosa'
+        Ruidoso:  'Qpiqr ocomt lago iome opsr qee sea keliciosa'
+        Traducido: 'Qpiqr ocomt lake iome opsr qee sea keliciosa'
+        Esperaba: Recommend_Food | Obtuvo: Query_Ingredients
+
+[FALLO] Original: 'Quiero cancelar mi reserva'
+        Ruidoso:  'Qjieo cancecr mi rtsevra'
+        Traducido: 'Qjieo cancecr my rtsevra'
+        Esperaba: Modify_Booking | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Mesa para dos el jueves por la noche'
+        Ruidoso:  'Meua para dso le jueves ph la onhce'
+        Traducido: 'Meua for dso thursday ph la onhce'
+        Esperaba: Book_Table | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Quiero actualizar mi reserva'
+        Ruidoso:  'Qiir oataklizar mi rserfa'
+        Traducido: 'I want to update my serf'
+        Esperaba: Modify_Booking | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Mesa para dos el domingo por la noche'
+        Ruidoso:  'Mea ptrl os e ldominog po la ncoge'
+        Traducido: 'Mea ptrl os e ldominog po la ncoge'
+        Esperaba: Book_Table | Obtuvo: Query_Ingredients
+
+[FALLO] Original: 'Recomiendame una postre sin gluten'
+        Ruidoso:  'eRcoupedam eunl msrte is gbtuen'
+        Traducido: 'eRcoupedam eunl msrte is gbtuen'
+        Esperaba: Recommend_Food | Obtuvo: Book_Table
+
+[FALLO] Original: 'Cuales son los ingredientes de la risotto'
+        Ruidoso:  'Cuafe so los nvgednetes ed la rjyttbo'
+        Traducido: 'Cuafe so los nvgednetes ed la rjyttbo'
+        Esperaba: Query_Ingredients | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Quiero comer algo como risotto que sea italiana'
+        Ruidoso:  'Qlireo coer gno cofo ysktto que swa talana'
+        Traducido: 'Qlireo coer gno cofo ysktto que swa talana'
+        Esperaba: Recommend_Food | Obtuvo: Query_Menu
+
+[FALLO] Original: 'Muestrame las categorias del menu'
+        Ruidoso:  'huestame lad ctagoisa del enu'
+        Traducido: 'huestame lad ctagoisa del enu'
+        Esperaba: Query_Menu | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Cuales son los ingredientes de la pasta'
+        Ruidoso:  'Caules sn los ifgeidenets de la pasp'
+        Traducido: 'Caules sn the ifgeidenets of the pasp'
+        Esperaba: Query_Ingredients | Obtuvo: Recommend_Food
+
+[FALLO] Original: 'Quiero reservar una mesa para el jueves a las 20:00'
+        Ruidoso:  'uireo dserjar nau nsa pa et jueve a lu :00'
+        Traducido: 'uireo dserjar nau nsa pa et thursday to mon:00'
+        Esperaba: Book_Table | Obtuvo: Recommend_Food
+
+==> Precisión con 30.0% de ruido: 56.00%
+
+
+=== RESUMEN GLOBAL ===
+Ruido 0.0% -> Precisión: 96.50%
+Ruido 5.0% -> Precisión: 96.00%
+Ruido 15.0% -> Precisión: 82.50%
+Ruido 30.0% -> Precisión: 56.00%
